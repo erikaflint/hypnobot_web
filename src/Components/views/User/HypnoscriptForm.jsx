@@ -38,7 +38,7 @@ const HypnoscriptForm = () => {
                     <Image.PreviewGroup
                         preview={{
                             onChange: (current, prev) => console.log(`current index: ${current}, prev index: ${prev}`),
-                            height:"500px",
+                            height: "500px",
 
                         }}
                     >
@@ -46,7 +46,7 @@ const HypnoscriptForm = () => {
                             response.map((item, i) => {
                                 return <Image
                                     width={150}
-                                    src={item}
+                                    src={process.env.REACT_APP_baseUrl+item}
                                     style={{ padding: ".5rem" }}
                                 />
                             })
@@ -83,6 +83,7 @@ const HypnoscriptForm = () => {
                     {isLoading ? "Please wait.." : <SendOutlined />}
                 </Button>
             </Form>
+
             {errorText && <p className='errorMsg'>{errorText}</p>}
         </div>
     )

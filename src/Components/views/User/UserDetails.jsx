@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { LogoutOutlined } from '@ant-design/icons'
+import { LogoutOutlined, HomeOutlined } from '@ant-design/icons'
 import { Button } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { profileImage } from '../../../utils/constant'
@@ -10,7 +10,7 @@ export default function UserDetails() {
     const navigate = useNavigate()
     const logout = () => {
         localStorage.clear()
-        navigate('/')
+        navigate('/login')
     }
 
     useEffect(() => {
@@ -26,7 +26,10 @@ export default function UserDetails() {
             </div>
             <div className='user-details-container_image'>
                 <img src={profileImage} alt="profile" />
-                <Button type="primary" shape="circle" icon={<LogoutOutlined />} size={'Large'} onClick={() => logout()} />
+                <div style={{display: 'flex', gap: '1rem'}}>
+                    <Button onClick={() => navigate('/')} type='primary' icon={<HomeOutlined />} />
+                    <Button type="primary" shape="circle" icon={<LogoutOutlined />} size={'Large'} onClick={() => logout()} />
+                </div>
             </div>
         </div>
     )
